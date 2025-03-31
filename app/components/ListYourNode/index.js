@@ -16,7 +16,7 @@ class ListYourNode extends React.Component {
         <IconContainer>
           <Icon name="add_circle" className="white-hover"/>
         </IconContainer>
-        Host your own node on the Helios Network
+        Host your own node
       </Container>
     );
   }

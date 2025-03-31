@@ -16,7 +16,7 @@ export default class NodesList extends React.Component {
       {
         id: 'ethNodeName',
         name: 'Node name',
-        width: 235,
+        width: 235+55,
         ascendingOrder: true,
         extraProps: {doubleGrow: true},
       }, {
@@ -55,12 +55,6 @@ export default class NodesList extends React.Component {
         id: 'txs',
         name: 'Block TXs',
         width: 75,
-        ascendingOrder: false,
-        extraProps: {},
-      }, {
-        id: 'uncles',
-        name: 'Uncles',
-        width: 55,
         ascendingOrder: false,
         extraProps: {},
       }, {
