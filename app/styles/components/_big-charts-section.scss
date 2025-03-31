@@ -1,0 +1,37 @@
+.big-charts-section {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 20px 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-between;
+  background-color: #F2F6FE;
+  border-radius: $border-radius;
+  box-shadow: $box-shadow;
+
+  .big-charts-item {
+    flex: 1;
+    min-width: 300px;
+    max-width: calc(33.333% - 14px);
+    background: $white;
+    border-radius: $border-radius;
+    padding: 20px;
+    box-shadow: $box-shadow;
+    transition: all $transition-time $transition-easing;
+
+    &:hover {
+      box-shadow: $box-shadow-hover;
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: 1200px) {
+      max-width: calc(50% - 10px);
+    }
+
+    @media (max-width: 768px) {
+      max-width: 100%;
+    }
+  }
+} 

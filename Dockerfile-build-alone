@@ -1,0 +1,12 @@
+### Stage 2: Servir avec Nginx
+FROM nginx:1.15-alpine
+WORKDIR /usr/share/nginx/html
+
+COPY ./config.js ./config.js
+COPY ./set-env-vars.js .
+COPY ./entrypoint.sh .
+COPY ./dist ./
+COPY ./maintenance ./maintenance
+COPY ./.htaccess ./.htaccess
+
+CMD ["nginx", "-g", "daemon off;"]

@@ -1,0 +1,48 @@
+version: 2
+
+jobs:
+  build:
+    docker:
+      - image: circleci/node:9
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - run:
+          name: Init Config
+          command: ./set-env-vars.js > config.js
+      - run:
+          name: Yarn Install
+          command: yarn install
+      - run:
+          name: Yarn Build
+          command: yarn build
+
+  trigger-docker-hub:
+    docker:
+      - image: circleci/node:9
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - run:
+          name: Trigger DockerHub
+          command: ./triggerDockerHub.sh
+
+workflows:
+  version: 2
+  deploy:
+    jobs:
+      - build:
+          filters:
+            tags:
+              only: /.*/
+      - trigger-docker-hub:
+          requires:
+            - build
+          filters:
+            tags:
+              only:
+                - latest
+                - /^v[0-9.]+$/
+            branches:
+              only:
+                - master

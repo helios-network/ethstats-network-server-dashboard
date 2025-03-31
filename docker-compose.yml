@@ -1,0 +1,24 @@
+services:
+  ethstats-network-server-dashboard:
+    image: docker-ethstats-network-server-dashboard:v0.0.1
+    command: ['nginx', '-g', 'daemon off;']
+    restart: always
+    ports:
+      - "3005:80"
+    environment:
+      - DS_URL=ws://deepstream:6020/deepstream
+    depends_on:
+      - deepstream
+
+  deepstream:
+    image: deepstreamio/deepstream.io:latest
+    restart: always
+    ports:
+      - "6020:6020"
+    environment:
+      - DEEPSTREAM_AUTH_AUTHENTICATE=true
+      - DEEPSTREAM_AUTH_AUTHENTICATION_HANDLER=file
+      - DEEPSTREAM_AUTH_AUTHENTICATION_OPTIONS={"users":[{"username":"frontend","password":""}]}
+      - DEEPSTREAM_AUTH_AUTHORIZE=true
+      - DEEPSTREAM_AUTH_AUTHORIZATION_HANDLER=file
+      - DEEPSTREAM_AUTH_AUTHORIZATION_OPTIONS={"users":[{"username":"frontend","password":"","permissions":{"record":{"read":true,"write":true},"event":{"read":true,"write":true},"rpc":{"provide":true,"request":true}}}]}
