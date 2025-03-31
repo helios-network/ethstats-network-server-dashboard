@@ -6,6 +6,7 @@ const Container = styled.div`
   background-color: ${props => props.hasError ? props.theme.colors.red_event : props.theme.colors.blue_v1};
   width: 100%;
   padding: 7px 24px 7px 12px;
+  height: 100px;
   box-shadow: 0 12px 24px 0 #FFF;
   justify-content: space-between;
   position: relative;
@@ -16,7 +17,7 @@ const Container = styled.div`
   transition: 300ms ease-in;
   
   &.notHidden {
-    transform: translateY(-56px);
+    transform: translateY(-100px);
   }
 `;
 

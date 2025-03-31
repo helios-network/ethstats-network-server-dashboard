@@ -7,7 +7,7 @@ const AbsoluteContainer = styled.div`
   //width: 100%;
   padding: 12px 24px;
   position: absolute;
-  top: 0;
+  top: 25%;
   left: 50%;
   margin-left: -142px;
   width: 284px;

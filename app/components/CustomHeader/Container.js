@@ -29,7 +29,7 @@ const Container = styled.div`
   }
   
   &.hidden {
-    transform: translateY(-56px);
+    transform: translateY(-100px);
   }
 
   @media (max-width: 768px) {
