@@ -12,25 +12,22 @@ const Container = styled.div`
   position: relative;
   min-height: 57px;
   transition: opacity linear 0.2s;
+  min-width: 100%;
   
   &:hover {
     opacity: 1;
   }
 
   @media (max-width: 768px) {
-    padding-right: 20px;
-    padding-left: 20px;
+    padding-right: 15px;
+    padding-left: 15px;
     min-height: 50px;
-    flex-wrap: wrap;
-    gap: 5px;
   }
 
   @media (max-width: 480px) {
     padding-right: 10px;
     padding-left: 10px;
     min-height: 45px;
-    flex-wrap: wrap;
-    gap: 5px;
   }
 `;
 /**

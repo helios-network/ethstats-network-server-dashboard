@@ -6,17 +6,17 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  // background-color: #F2F6FE;
+  background-color: #F2F6FE;
   flex: 1 0 auto;
-  overflow: hidden;
+  overflow-x: auto;
 
   @media (max-width: 768px) {
-    padding: 0 10px;
+    padding: 0;
     width: 100%;
   }
 
   @media (max-width: 480px) {
-    padding: 0 5px;
+    padding: 0;
     width: 100%;
   }
 `;
