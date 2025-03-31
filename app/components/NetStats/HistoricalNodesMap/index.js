@@ -30,11 +30,11 @@ class HistoricalNodesMap extends React.Component {
         geographyConfig={{
           popupOnHover: false,
           highlightOnHover: false,
-          borderColor: '#FFF',
+          borderColor: '#303030',
         }
         }
         fills={{
-          defaultFill: '#FFF',
+          defaultFill: '#303030',
           bubbleFill: '#50E9D2',
           offlineBubbleFill: '#EF6C6C',
         }}
