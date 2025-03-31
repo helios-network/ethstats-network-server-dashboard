@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const SmallChartsContainer = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 24px;
   width: 100%;
   box-sizing: border-box;
@@ -15,10 +15,12 @@ const SmallChartsContainer = styled.div`
     position: relative;
     border: 1px solid #e2e8f0;
     width: 100%;
+    max-width: 100%;
     box-sizing: border-box;
     overflow: visible;
     display: flex;
     flex-direction: column;
+    min-width: 0;
 
     &:hover {
       border-color: #cbd5e1;
@@ -28,6 +30,7 @@ const SmallChartsContainer = styled.div`
     /* Style spécifique pour la carte */
     &:last-child {
       padding: 0;
+      grid-column: 1 / -1;
 
       .map-container {
         width: 100%;
@@ -135,16 +138,15 @@ const SmallChartsContainer = styled.div`
       font-size: 0.875rem;
       letter-spacing: -0.01em;
     }
-
   }
 
   @media (max-width: 1920px) {
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: 20px;
   }
 
   @media (max-width: 1440px) {
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    grid-template-columns: 1fr;
     gap: 16px;
   }
 `;
