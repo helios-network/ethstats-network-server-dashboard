@@ -25,6 +25,7 @@ export default class NodesList extends React.Component {
         width: 95,
         ascendingOrder: true,
         extraProps: {},
+        style: { paddingLeft: "30px" }
       }, {
         id: 'latency',
         name: 'Latency',
@@ -138,6 +139,7 @@ export default class NodesList extends React.Component {
                     onClick={!hData.noSorting ? this.changeSortType : undefined}
                     doubleGrow={ hData.extraProps.doubleGrow }
                     rightSide={ hData.extraProps.rightSide }
+                    style={{... hData.style}}
                   >
                     { hData.name }
                     { this.state.sortOptions.key === hData.id &&

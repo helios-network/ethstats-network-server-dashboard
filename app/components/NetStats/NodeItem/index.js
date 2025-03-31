@@ -216,12 +216,12 @@ class NodeItem extends React.Component {
       <Container>
         <Pin pinned={pinned} ethNodeName={ethNodeName} onClick={this.props.updateNodePinCallback} />
         <FlexBox onClick={() => {this.handleNodeClick(shortNodeName);}}>
-          <Detail width="235px" color={colors.nameColor} doubleGrow data-tip data-for={`viewDetails-${shortNodeName}`}>{shortNodeName}
+          <Detail width="235px" color={colors.nameColor} doubleGrow data-tip data-for={`viewDetails-${shortNodeName}`} className="max-width-text">{shortNodeName}
             <ReactTooltip id={`viewDetails-${shortNodeName}`} place="bottom" className="tooltip-custom">
               <span>View details</span>
             </ReactTooltip>
           </Detail>
-          <Detail width="95px" color={colors.nameColor} data-tip data-for={`viewNodeType-${shortNodeName}`}>{nodeType}
+          <Detail width="95px" style={{ textAlign: "center" }} color={colors.nameColor} data-tip data-for={`viewNodeType-${shortNodeName}`}>{nodeType}
             <ReactTooltip id={`viewNodeType-${shortNodeName}`} place="bottom" className="tooltip-custom">
               <span>{data['ethstats:nodeData']['ethstats:node'] ? data['ethstats:nodeData']['ethstats:node'] : 'N/A' }</span>
             </ReactTooltip>

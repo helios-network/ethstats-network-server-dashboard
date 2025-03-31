@@ -6,7 +6,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  background-color: #F2F6FE;
+  // background-color: #F2F6FE;
   flex: 1 0 auto;
   overflow: hidden;
 

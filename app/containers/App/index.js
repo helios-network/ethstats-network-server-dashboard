@@ -181,11 +181,11 @@ class App extends React.Component {
               </Modal>
             </div>
             <div className="full-width">
-              <GuideTour
+              {/* <GuideTour
                 run={this.state.tour.run}
                 autoStart={this.state.tour.autoStart}
                 onTourEnd={this.resetTour}
-              />
+              /> */}
               { !this.state.acceptedCookies && <CookiesBanner onClick={this.acceptCookies}/> }
               { !inPrivacy && header }
               { children }

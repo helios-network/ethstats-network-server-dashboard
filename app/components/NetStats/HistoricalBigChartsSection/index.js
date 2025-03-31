@@ -103,7 +103,7 @@ class HistoricalBlockChartsSection extends React.Component {
           chartsData={blockDifficultyChartData}
           hasNavigation
         />
-        <HistoricalBlockChartSectionItem
+        {/* <HistoricalBlockChartSectionItem
           id="gas_limit"
           mainTitle="Block gas limit"
           mainValue={blockGasLimit}
@@ -122,7 +122,7 @@ class HistoricalBlockChartsSection extends React.Component {
           labelPrefix="Block: "
           chartsData={gasLimitChartData}
           hasNavigation
-        />
+        /> */}
       </Container>
     );
   }

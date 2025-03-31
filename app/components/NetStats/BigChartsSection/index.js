@@ -44,7 +44,7 @@ class BigChartsSection extends React.Component {
           valuePrefix="Difficulty: "
           labelPrefix="Block: "
         />
-        <BigChartsSectionItem
+        {/* <BigChartsSectionItem
           id="gas_limit"
           mainTitle="Block gas limit"
           secondTitle="Avg. gas limit"
@@ -62,7 +62,7 @@ class BigChartsSection extends React.Component {
           bottomLeftReducer="gasLimit"
           valuePrefix="Gas limit: "
           labelPrefix="Block: "
-        />
+        /> */}
       </Container>
     );
   }

@@ -348,6 +348,16 @@ h5, .h5 {
   min-height: 200px;
 }
 
+.nodeslist-scrollable div div {
+  border-radius: 16px;
+}
+
+.max-width-text {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
 #container {
   .joyride-beacon {
     height: 20px;

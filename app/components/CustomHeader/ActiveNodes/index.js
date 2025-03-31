@@ -19,7 +19,7 @@ class ActiveNodes extends React.Component {
     }, {active: 0, total: 0});
     return (
       <Container>
-        {activeCounter.active}/{activeCounter.total}
+        {activeCounter.active}
       </Container>
     );
   }
