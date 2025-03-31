@@ -21,6 +21,8 @@ const Container = styled.div`
     padding-right: 20px;
     padding-left: 20px;
     min-height: 50px;
+    flex-wrap: wrap;
+    gap: 5px;
   }
 
   @media (max-width: 480px) {

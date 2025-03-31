@@ -17,13 +17,17 @@ const HeaderContent = styled.div`
   @media (max-width: 768px) {
     padding: 14px 20px 15px;
     font-size: 9px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
   }
 
   @media (max-width: 480px) {
     padding: 14px 10px 15px;
     font-size: 8px;
-    flex-wrap: wrap;
-    gap: 10px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
   }
 `;
 

@@ -28,12 +28,23 @@ const Detail = styled.div`
   @media (max-width: 768px) {
     font-size: 11px;
     line-height: 12px;
+    width: ${props => {
+      if (props.doubleGrow) return '100%';
+      if (props.width === '260px') return '100%';
+      if (props.width === '160px') return '100%';
+      return props.width;
+    }};
   }
 
   @media (max-width: 480px) {
     font-size: 10px;
     line-height: 11px;
-    width: ${props => props.doubleGrow ? '100%' : props.width};
+    width: ${props => {
+      if (props.doubleGrow) return '100%';
+      if (props.width === '260px') return '100%';
+      if (props.width === '160px') return '100%';
+      return props.width;
+    }};
     text-align: left;
   }
 `;

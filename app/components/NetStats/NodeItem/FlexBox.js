@@ -24,7 +24,20 @@ const FlexBox = styled.div`
       display: block;
     }
   }
-\`;
+
+  @media (max-width: 768px) {
+    padding: 15px 0 16px;
+    font-size: 10px;
+    line-height: 12px;
+    gap: 5px;
+  }
+
+  @media (max-width: 480px) {
+    padding: 10px 0 11px;
+    font-size: 9px;
+    line-height: 11px;
+    gap: 5px;
+  }
 `;
 
 export default FlexBox;

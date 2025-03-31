@@ -15,6 +15,20 @@ const InnerHeaderItem = styled.div`
   &:hover {
     opacity: ${props => props.isClickable ? '1' : '0.6'};
   }
+
+  @media (max-width: 768px) {
+    width: 100%;
+    text-align: left;
+    justify-content: flex-start;
+    padding: 4px 0;
+  }
+
+  @media (max-width: 480px) {
+    width: 100%;
+    text-align: left;
+    justify-content: flex-start;
+    padding: 4px 0;
+  }
 `;
 
 export default class HeaderItem extends React.Component {
