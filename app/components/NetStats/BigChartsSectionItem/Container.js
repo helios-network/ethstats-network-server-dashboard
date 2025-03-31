@@ -9,7 +9,7 @@ const Container = styled.div`
   box-shadow: 0 4px 150px -48px #181f2d20;
   border-radius: calc(32px + 4 * (100vw - 320px) / 1080);
   width: 100%;
-  overflow: hidden;
+  overflow: visible;
 
   @media (max-width: 768px) {
     padding: 15px 20px;

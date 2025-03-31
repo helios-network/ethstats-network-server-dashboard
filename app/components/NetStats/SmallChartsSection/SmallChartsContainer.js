@@ -16,7 +16,7 @@ const SmallChartsContainer = styled.div`
     border: 1px solid #e2e8f0;
     width: 100%;
     box-sizing: border-box;
-    overflow: hidden;
+    overflow: visible;
     display: flex;
     flex-direction: column;
 
