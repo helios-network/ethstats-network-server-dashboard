@@ -25,7 +25,7 @@ class HistoricalSmallChartsSection extends React.Component {
     return (
       <Container>
         <SmallChartsContainer id="small_charts">
-          <HistoricalSmallChartsSectionItem
+          {/* <HistoricalSmallChartsSectionItem
             title="Uncles - 25 blocks/bar"
             dataKey="ethstats:count"
             measureUnit="uncles"
@@ -33,7 +33,7 @@ class HistoricalSmallChartsSection extends React.Component {
             color="#2774FE"
             reducerName="uncleCount"
             chartData={unclesCountChartData}
-          />
+          /> */}
           <HistoricalSmallChartsSectionItem
             title="Transactions"
             dataKey="alethio:numberOfTxs"

@@ -10,14 +10,14 @@ class SmallChartsSection extends React.Component {
     return (
       <Container>
         <SmallChartsContainer id="small_charts">
-          <SmallChartsSectionItem
+          {/* <SmallChartsSectionItem
             title="Uncles - 25 blocks/bar"
             dataKey="ethstats:count"
             measureUnit="uncles"
             tooltipKey="block"
             color="#2774FE"
             reducerName="uncleCount"
-          />
+          /> */}
           <SmallChartsSectionItem
             title="Transactions"
             dataKey="alethio:numberOfTxs"
