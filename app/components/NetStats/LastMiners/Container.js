@@ -3,8 +3,8 @@ import styled from 'styled-components';
 const Container = styled.div`
   padding: 0 20px;
   font-family: "Helvetica Neue", Arial, sans-serif;
-  min-width: 230px;
-  max-width: 230px;
+  // min-width: 230px;
+  // max-width: 230px;
 
   @media (max-width: 768px) {
     min-width: 200px;

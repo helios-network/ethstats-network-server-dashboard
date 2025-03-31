@@ -216,7 +216,7 @@ class NodeItem extends React.Component {
       <Container>
         <Pin pinned={pinned} ethNodeName={ethNodeName} onClick={this.props.updateNodePinCallback} />
         <FlexBox onClick={() => {this.handleNodeClick(shortNodeName);}}>
-          <Detail width="235px" color={colors.nameColor} doubleGrow data-tip data-for={`viewDetails-${shortNodeName}`} className="max-width-text">{shortNodeName}
+          <Detail width="290px" color={colors.nameColor} doubleGrow data-tip data-for={`viewDetails-${shortNodeName}`} className="max-width-text">{shortNodeName}
             <ReactTooltip id={`viewDetails-${shortNodeName}`} place="bottom" className="tooltip-custom">
               <span>View details</span>
             </ReactTooltip>
@@ -235,7 +235,6 @@ class NodeItem extends React.Component {
           <Detail width="50px" color={colors.nameColor} data-tip data-for={`viewDetails-${shortNodeName}`}>{peers}</Detail>
           <Detail width="160px" color={colors.blockColor} data-tip data-for={`viewDetails-${shortNodeName}`}>{lastBlock}<span className="space"/>{lastBlockHash}</Detail>
           <Detail width="75px" color={colors.nameColor} data-tip data-for={`viewDetails-${shortNodeName}`}>{lastBlockTxCount}</Detail>
-          <Detail width="55px" color={colors.nameColor} data-tip data-for={`viewDetails-${shortNodeName}`}>{lastBlockUnclesCount}</Detail>
           <Counter
             nodeIsActive={data['ethstats:nodeData']['ethstats:nodeIsActive']}
             receivedTimestamp={data['ethstats:nodeBlockData'] && data['ethstats:nodeBlockData']['ethstats:receivedTimestamp'].toString()}

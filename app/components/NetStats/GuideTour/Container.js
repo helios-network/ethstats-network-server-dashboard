@@ -10,7 +10,7 @@ const Container = styled.div`
   font-weight: 600;
   line-height: 15px;
   letter-spacing: 0.2px;
-  padding: 6px 16px 6px 6px;
+  padding: 6px 6px 6px 6px;
   margin-right: ${props => props.noMargin ? '0' : '16px'};
   border-radius: 20px;
   transition: all linear 0.2s;
