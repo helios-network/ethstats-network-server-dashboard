@@ -8,14 +8,14 @@ const radius = 4;
 class HistoricalNodesMap extends React.Component {
   render() {
     const { nodesData } = this.props;
-    const bubblesData = [];
+    let bubblesData = [];
     if (nodesData) {
-      nodesData.forEach((item) => {
-        const geo = item['ethstats:nodeData'] && item['ethstats:nodeData']['geo:point'];
-        const isOnline = item['ethstats:nodeData'] && item['ethstats:nodeData']['ethstats:nodeIsActive'];
-        const nodeName =  item['ethstats:nodeData'] && item['ethstats:nodeData']['ethstats:nodeName'];
+      bubblesData = Object.keys(nodesData).reduce((accumulator, nodeKey) => {
+        const geo = nodesData[nodeKey]['ethstats:nodeData'] && nodesData[nodeKey]['ethstats:nodeData']['geo:point'];
+        const isOnline = nodesData[nodeKey]['ethstats:nodeData'] && nodesData[nodeKey]['ethstats:nodeData']['ethstats:nodeIsActive'];
+        const nodeName =  nodesData[nodeKey]['ethstats:nodeData'] && nodesData[nodeKey]['ethstats:nodeData']['ethstats:nodeName'];
         if (geo && nodeName) {
-          bubblesData.push({
+          accumulator.push({
             name: nodeName,
             radius,
             latitude: geo.split(' ')[0],
@@ -23,7 +23,8 @@ class HistoricalNodesMap extends React.Component {
             fillKey: (!isOnline) ? 'offlineBubbleFill' : 'bubbleFill',
           });
         }
-      });
+        return accumulator;
+      }, []);
     }
     return (
       <Datamap
@@ -91,7 +92,7 @@ class HistoricalNodesMap extends React.Component {
 }
 
 HistoricalNodesMap.propTypes = {
-  nodesData: PropTypes.array,
+  nodesData: PropTypes.object,
 };
 
 

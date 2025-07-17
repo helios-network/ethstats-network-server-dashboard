@@ -15,7 +15,7 @@ import { AVG_GAS_PRICE_ENABLED } from 'config';
 
 class BigChartsSectionItem extends React.Component {
   render() {
-    const { color, mainTitle, bottomLeftReducer, secondTitle, secondValue, thirdTitle, dataKey, tooltipKey, measureUnit, hasDomain, iconName, chartReducer, topLeftReducer, topRightReducer, labelPrefix, valuePrefix} = this.props;
+    const { color, mainTitle, bottomLeftReducer, secondTitle, secondValue, thirdTitle, dataKey, tooltipKey, measureUnit, hasDomain, iconName, chartReducer, topLeftReducer, topRightReducer, labelPrefix, valuePrefix, customChart} = this.props;
     return (
       <Container id={this.props.id}>
         <LeftContainer>
@@ -29,7 +29,13 @@ class BigChartsSectionItem extends React.Component {
           <FlexRow>
             {(topRightReducer !== 'pendingLastBlock' || (topRightReducer === 'pendingLastBlock' && AVG_GAS_PRICE_ENABLED)) && <TopRight color={color} mainTitle={thirdTitle} reducerName={topRightReducer}/>}
           </FlexRow>
-          <BigChart valuePrefix={valuePrefix} labelPrefix={labelPrefix} color={color} dataKey={dataKey} measureUnit={measureUnit} tooltipKey={tooltipKey} hasDomain={hasDomain} chartReducer={chartReducer} hasNavigation/>
+          {customChart ? (
+            <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              {customChart}
+            </div>
+          ) : (
+            <BigChart valuePrefix={valuePrefix} labelPrefix={labelPrefix} color={color} dataKey={dataKey} measureUnit={measureUnit} tooltipKey={tooltipKey} hasDomain={hasDomain} chartReducer={chartReducer} hasNavigation/>
+          )}
         </RightContainer>
       </Container>
     );
@@ -53,7 +59,8 @@ BigChartsSectionItem.propTypes = {
   thirdTitle: PropTypes.string,
   tooltipKey: PropTypes.string,
   topLeftReducer: PropTypes.string,
-  topRightReducer: PropTypes.string
+  topRightReducer: PropTypes.string,
+  customChart: PropTypes.node
 };
 
 export default BigChartsSectionItem;
