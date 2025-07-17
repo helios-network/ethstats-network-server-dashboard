@@ -26,22 +26,22 @@ class BigChartsSection extends React.Component {
           hasDomain
         />
         <BigChartsSectionItem
-          id="difficulty"
-          mainTitle="Difficulty"
-          secondTitle="Avg. difficulty"
+          id="transactions"
+          mainTitle="Transactions"
+          secondTitle="Avg. transactions"
           secondValue="N/A"
-          thirdTitle="Network hashrate"
-          color="#EFC865"
-          iconName="fan"
-          dataKey="ethon:blockDifficulty"
-          measureUnit="H"
+          thirdTitle="Pending transactions"
+          color="#4CAF50"
+          iconName="transaction"
+          dataKey="alethio:numberOfTxs"
+          measureUnit="TXs"
           tooltipKey="block"
           hasDomain
-          chartReducer="blockDifficulty"
-          topLeftReducer="blockDifficulty"
-          topRightReducer="avgNetworkHashrate"
-          bottomLeftReducer="blockDifficulty"
-          valuePrefix="Difficulty: "
+          chartReducer="transactionsHistory"
+          topLeftReducer="transactionsHistory"
+          topRightReducer="pendingLastBlock"
+          bottomLeftReducer="transactionsHistory"
+          valuePrefix="Transactions: "
           labelPrefix="Block: "
         />
         {/* <BigChartsSectionItem
