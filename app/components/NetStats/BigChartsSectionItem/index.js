@@ -15,7 +15,7 @@ import { AVG_GAS_PRICE_ENABLED } from 'config';
 
 class BigChartsSectionItem extends React.Component {
   render() {
-    const { color, mainTitle, bottomLeftReducer, secondTitle, secondValue, thirdTitle, dataKey, tooltipKey, measureUnit, hasDomain, iconName, chartReducer, topLeftReducer, topRightReducer, labelPrefix, valuePrefix, customChart} = this.props;
+    const { color, mainTitle, bottomLeftReducer, secondTitle, secondValue, thirdTitle, dataKey, tooltipKey, measureUnit, hasDomain, iconName, chartReducer, topLeftReducer, topRightReducer, labelPrefix, valuePrefix, customChart, chartData} = this.props;
     return (
       <Container id={this.props.id}>
         <LeftContainer>
@@ -34,7 +34,18 @@ class BigChartsSectionItem extends React.Component {
               {customChart}
             </div>
           ) : (
-            <BigChart valuePrefix={valuePrefix} labelPrefix={labelPrefix} color={color} dataKey={dataKey} measureUnit={measureUnit} tooltipKey={tooltipKey} hasDomain={hasDomain} chartReducer={chartReducer} hasNavigation/>
+            <BigChart 
+              valuePrefix={valuePrefix} 
+              labelPrefix={labelPrefix} 
+              color={color} 
+              dataKey={dataKey} 
+              measureUnit={measureUnit} 
+              tooltipKey={tooltipKey} 
+              hasDomain={hasDomain} 
+              chartReducer={chartReducer} 
+              hasNavigation
+              chartData={chartData}
+            />
           )}
         </RightContainer>
       </Container>
@@ -60,7 +71,8 @@ BigChartsSectionItem.propTypes = {
   tooltipKey: PropTypes.string,
   topLeftReducer: PropTypes.string,
   topRightReducer: PropTypes.string,
-  customChart: PropTypes.node
+  customChart: PropTypes.node,
+  chartData: PropTypes.array
 };
 
 export default BigChartsSectionItem;

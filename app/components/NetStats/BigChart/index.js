@@ -29,7 +29,11 @@ class BigChart extends Component {
     window.open(`${EXPLORER_URL}/block/${blockNr}`, '_blank');
   }
   render() {
-    const {dataKey, tooltipKey, measureUnit, hasDomain, hasNavigation, color, chartStateData, labelPrefix, valuePrefix} = this.props;
+    const {dataKey, tooltipKey, measureUnit, hasDomain, hasNavigation, color, chartStateData, labelPrefix, valuePrefix, chartData} = this.props;
+    
+    // Use chartData prop if provided, otherwise use chartStateData from reducer
+    const dataToUse = chartData || chartStateData;
+    
     let data = [];
     let RoundedBar;
     let min;
@@ -41,8 +45,8 @@ class BigChart extends Component {
     let minValueString = '';
     let maxValueString = '';
     const minPointSize = 1;
-    if (chartStateData) {
-      data = prepareChartData(chartStateData.slice(chartStateData.length - this.props.numberOfBars, chartStateData.length), dataKey);
+    if (dataToUse) {
+      data = prepareChartData(dataToUse.slice(dataToUse.length - this.props.numberOfBars, dataToUse.length), dataKey);
       RoundedBar = (props) => {
         const {fill, x, y, height} = props;
 
@@ -53,7 +57,7 @@ class BigChart extends Component {
           </g>
         );
       };
-      if (hasDomain && chartStateData) {
+      if (hasDomain && dataToUse) {
         min = min2 = Math.min(...data.map(item => item[dataKey]));
         max = Math.max(...data.map(item => item[dataKey]));
         if (min === max) {
@@ -63,10 +67,10 @@ class BigChart extends Component {
           minValueString = min2 + 's';
           maxValueString = max + 's';
           sum = 0;
-          for (let i = 0; i < chartStateData.length; i++) {
-            sum = sum + chartStateData[i]['ethstats:blockTime'];
+          for (let i = 0; i < dataToUse.length; i++) {
+            sum = sum + dataToUse[i]['ethstats:blockTime'];
           }
-          avg = sum / chartStateData.length;
+          avg = sum / dataToUse.length;
           chartColor = '#2774FE';
         } else if (dataKey === 'ethon:blockDifficulty') {
           minValueString = convertHashes(min2, 4);
@@ -93,7 +97,7 @@ class BigChart extends Component {
     }
     return (
       <div>
-        { chartStateData ?
+        { dataToUse ?
           <div>
             <BarChart
               cursor={EXPLORER_URL ? 'pointer' : '' }
@@ -141,6 +145,7 @@ BigChart.propTypes = {
   hasNavigation: PropTypes.bool,
   chartStateData: PropTypes.array,
   numberOfBars: PropTypes.number,
+  chartData: PropTypes.array,
 };
 
 const mapStateToProps = (state, props) => {
