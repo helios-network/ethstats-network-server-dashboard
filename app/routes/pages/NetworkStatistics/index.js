@@ -245,23 +245,6 @@ class NetworkStatistics extends React.Component {
             </SectionHeader>
             <NodesList/>
           </SectionContainer>
-          
-          <SectionContainer>
-            <SectionHeader>
-              <div>
-                <SectionTitle>
-                  <SectionIcon color="#fef3c7" iconColor="#92400e">
-                    📈
-                  </SectionIcon>
-                  Network Analytics
-                </SectionTitle>
-                <SectionDescription>
-                  Detailed network performance and transaction analytics
-                </SectionDescription>
-              </div>
-            </SectionHeader>
-            <SmallChartsSection/>
-          </SectionContainer>
         </ContainerWithFixedElements>
       </PageContainer>
     );
