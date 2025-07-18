@@ -1,6 +1,8 @@
 import React from 'react';
 import Container from './Container';
 import BigChartsSectionItem from 'components/NetStats/BigChartsSectionItem';
+import LastMiners from 'components/NetStats/LastMiners';
+import NodesMap from 'components/NetStats/NodesMap';
 import { connect } from 'react-redux';
 
 import styled from 'styled-components';
@@ -230,7 +232,7 @@ class BigChartsSection extends React.Component {
           bottomLeftReducer="minersTop"
           valuePrefix="Miner: "
           labelPrefix="Block: "
-          
+          customChart={<LastMiners />}
         />
         <BigChartsSectionItem
           id="nodes_map"
@@ -250,7 +252,7 @@ class BigChartsSection extends React.Component {
           bottomLeftReducer="nodesList"
           valuePrefix="Node: "
           labelPrefix="Location: "
-          
+          customChart={<NodesMap />}
         />
         <BigChartsSectionItem
           id="gas_limit"

@@ -32,7 +32,8 @@ class BigChart extends Component {
     const {dataKey, tooltipKey, measureUnit, hasDomain, hasNavigation, color, chartStateData, labelPrefix, valuePrefix, chartData} = this.props;
     
     // Use chartData prop if provided, otherwise use chartStateData from reducer
-    const dataToUse = chartData || chartStateData;
+    // Ensure dataToUse is an array
+    const dataToUse = chartData || (Array.isArray(chartStateData) ? chartStateData : null);
     
     let data = [];
     let RoundedBar;
@@ -58,10 +59,20 @@ class BigChart extends Component {
         );
       };
       if (hasDomain && dataToUse) {
-        min = min2 = Math.min(...data.map(item => item[dataKey]));
-        max = Math.max(...data.map(item => item[dataKey]));
+        // Use raw data for domain calculation, not processed data
+        const rawValues = dataToUse.map(item => item[dataKey]).filter(val => val !== undefined && val !== null);
+        min = min2 = Math.min(...rawValues);
+        max = Math.max(...rawValues);
         if (min === max) {
           min = 0;
+        }
+        
+        // Add some padding to avoid extreme values
+        const range = max - min;
+        if (range > 0) {
+          const padding = range * 0.1; // 10% padding
+          min = Math.max(0, min - padding);
+          max = max + padding;
         }
         if (dataKey === 'ethstats:blockTime') {
           minValueString = min2 + 's';
@@ -143,7 +154,7 @@ BigChart.propTypes = {
   color: PropTypes.string,
   hasDomain: PropTypes.bool,
   hasNavigation: PropTypes.bool,
-  chartStateData: PropTypes.array,
+  chartStateData: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
   numberOfBars: PropTypes.number,
   chartData: PropTypes.array,
 };

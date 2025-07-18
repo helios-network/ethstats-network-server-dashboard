@@ -13,7 +13,7 @@ class ListYourNode extends React.Component {
   render() {
     return (
       <Container onClick={this.showModal}>
-        <IconContainer>
+        <IconContainer parent="&:hover">
           <Icon name="add_circle" className="white-hover"/>
         </IconContainer>
         Host your own node

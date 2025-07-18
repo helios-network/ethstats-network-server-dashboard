@@ -9,13 +9,17 @@ const radius = 4;
 class NodesMap extends React.Component {
   render() {
     const { nodesData } = this.props;
+    
     // dataToSave['ethstats:nodeData']['geo:point'];
     let bubblesData = [];
     if (nodesData) {
       bubblesData = Object.keys(nodesData).reduce((accumulator, nodeKey) => {
-        const geo = nodesData[nodeKey]['ethstats:nodeData'] && nodesData[nodeKey]['ethstats:nodeData']['geo:point'];
-        const isOnline = nodesData[nodeKey]['ethstats:nodeData'] && nodesData[nodeKey]['ethstats:nodeData']['ethstats:nodeIsActive'];
-        const nodeName =  nodesData[nodeKey]['ethstats:nodeData'] && nodesData[nodeKey]['ethstats:nodeData']['ethstats:nodeName'];
+        const nodeData = nodesData[nodeKey];
+        
+        const geo = nodeData['ethstats:nodeData'] && nodeData['ethstats:nodeData']['geo:point'];
+        const isOnline = nodeData['ethstats:nodeData'] && nodeData['ethstats:nodeData']['ethstats:nodeIsActive'];
+        const nodeName = nodeData['ethstats:nodeData'] && nodeData['ethstats:nodeData']['ethstats:nodeName'];
+        
         if (geo && nodeName) {
           accumulator.push({
             name: nodeName,
@@ -28,6 +32,7 @@ class NodesMap extends React.Component {
         return accumulator;
       }, []);
     }
+    
     return (
       <Datamap
         geographyConfig={{

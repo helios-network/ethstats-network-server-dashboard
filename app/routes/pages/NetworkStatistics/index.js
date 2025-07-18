@@ -235,6 +235,23 @@ class NetworkStatistics extends React.Component {
             <BigChartsSection/>
           </SectionContainer>
           
+          {/* <SectionContainer>
+            <SectionHeader>
+              <div>
+                <SectionTitle>
+                  <SectionIcon color="#fef3c7" iconColor="#d97706">
+                    📈
+                  </SectionIcon>
+                  Network Analytics
+                </SectionTitle>
+                <SectionDescription>
+                  Detailed network metrics and miner statistics
+                </SectionDescription>
+              </div>
+            </SectionHeader>
+            <SmallChartsSection/>
+          </SectionContainer> */}
+          
           <NetworkNodesSection>
             <SectionContainer>
               <SectionHeader>

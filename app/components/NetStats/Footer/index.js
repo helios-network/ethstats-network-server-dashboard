@@ -25,6 +25,7 @@ class Footer extends React.Component {
             <Text>&nbsp;Helioschain</Text>
           </AlethioLink>
         </FlexRow>
+
       </Container>
     );
   }
