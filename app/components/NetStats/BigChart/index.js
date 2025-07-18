@@ -8,9 +8,6 @@ import { BigNumber }  from 'bignumber.js';
 import ChartTooltip from 'components/ChartTooltip';
 import Spinner from '../BigChartsSectionItem/Spinner';
 import SpinnerContainer from './SpinnerContainer';
-import Container from './Container';
-import Label from './Label';
-import Value from './Value';
 import spinner from 'resources/img/Eclipse.svg';
 
 const BAR_WIDTH = 8;
@@ -59,20 +56,10 @@ class BigChart extends Component {
         );
       };
       if (hasDomain && dataToUse) {
-        // Use raw data for domain calculation, not processed data
-        const rawValues = dataToUse.map(item => item[dataKey]).filter(val => val !== undefined && val !== null);
-        min = min2 = Math.min(...rawValues);
-        max = Math.max(...rawValues);
+        min = min2 = Math.min(...data.map(item => item[dataKey]));
+        max = Math.max(...data.map(item => item[dataKey]));
         if (min === max) {
           min = 0;
-        }
-        
-        // Add some padding to avoid extreme values
-        const range = max - min;
-        if (range > 0) {
-          const padding = range * 0.1; // 10% padding
-          min = Math.max(0, min - padding);
-          max = max + padding;
         }
         if (dataKey === 'ethstats:blockTime') {
           minValueString = min2 + 's';
@@ -110,6 +97,31 @@ class BigChart extends Component {
       <div>
         { dataToUse ?
           <div>
+            {/* Max value et label au-dessus du graphique - seulement si hasDomain est true */}
+            {hasDomain && (
+              <div style={{ 
+                display: 'flex', 
+                justifyContent: 'space-between', 
+                alignItems: 'flex-end',
+                padding: '0 0 5px 0'
+              }}>
+                <div style={{ 
+                  fontSize: '12px', 
+                  fontWeight: '600', 
+                  color: '#FF6B6B'
+                }}>
+                  {maxValueString}
+                </div>
+                <div style={{ 
+                  fontSize: '12px', 
+                  fontWeight: '600', 
+                  color: '#8399B8'
+                }}>
+                  Max.
+                </div>
+              </div>
+            )}
+            
             <BarChart
               cursor={EXPLORER_URL ? 'pointer' : '' }
               width={this.props.numberOfBars * BAR_WIDTH} height={CHART_HEIGHT} data={data}
@@ -128,16 +140,31 @@ class BigChart extends Component {
               {hasDomain && <YAxis orientation="left" domain={[min, max]} hide/>}
               <ReferenceLine y={avg} label="" stroke={chartColor} />
             </BarChart>
-            <Container spaceBetween padded>
-              <Container>
-                <Label className="white">Min.</Label>
-                <Value>{minValueString}</Value>
-              </Container>
-              <Container>
-                <Label className="red">Max.</Label>
-                <Value>{maxValueString}</Value>
-              </Container>
-            </Container>
+            
+            {/* Min value et label en-dessous du graphique - seulement si hasDomain est true */}
+            {hasDomain && (
+              <div style={{ 
+                display: 'flex', 
+                justifyContent: 'space-between', 
+                alignItems: 'flex-start',
+                padding: '5px 0 0 0'
+              }}>
+                <div style={{ 
+                  fontSize: '12px', 
+                  fontWeight: '600', 
+                  color: '#4CAF50'
+                }}>
+                  {minValueString}
+                </div>
+                <div style={{ 
+                  fontSize: '12px', 
+                  fontWeight: '600', 
+                  color: '#8399B8'
+                }}>
+                  Min.
+                </div>
+              </div>
+            )}
           </div> : <SpinnerContainer><Spinner src={spinner}/></SpinnerContainer> }
       </div>
     );
