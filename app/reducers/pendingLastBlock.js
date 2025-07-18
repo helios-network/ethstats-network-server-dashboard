@@ -1,7 +1,7 @@
 import * as types from 'constants/pendingLastBlock';
 
 const initialState = {
-  data: null,
+  data: {},
   loaded: false,
   loading: false,
   error: null,

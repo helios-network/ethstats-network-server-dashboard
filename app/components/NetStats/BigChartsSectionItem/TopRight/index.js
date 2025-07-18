@@ -19,7 +19,7 @@ class TopRight extends React.Component {
       } else if (reducerName === 'avgNetworkHashrate') {
         finalValue = convertHashes(chartStateData) + '/s';
         content.push(<SmallValue color={color} key={reducerName}>{finalValue}</SmallValue>);
-      } else if (reducerName === 'pendingLastBlock') {
+      } else if (reducerName === 'pendingLastBlock' && chartStateData.averageGasPrice != undefined) {
         finalValue = numberWithCommas(converter(chartStateData.averageGasPrice, 'wei'));
         content.push(<SmallValue color={color} key={reducerName}>{finalValue}</SmallValue>);
       }
