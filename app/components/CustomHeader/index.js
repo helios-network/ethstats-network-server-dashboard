@@ -10,6 +10,7 @@ import StatsItem from './StatsItem';
 import MobileMenu from './MobileMenu';
 import StatsLabel from './StatsLabel';
 import PageLatency from './PageLatency/index';
+import AvgBlockTime from './AvgBlockTime/index';
 import ActiveNodes from './ActiveNodes/index';
 import ListYourNode from 'components/ListYourNode';
 
@@ -48,6 +49,10 @@ export default class CustomHeader extends React.Component {
           </LeftFlexHalf>
           {!isMobile && (
             <StatsContainer>
+              <StatsItem>
+                <StatsLabel>Avg. block time: </StatsLabel>
+                <AvgBlockTime/>
+              </StatsItem>
               <StatsItem>
                 <StatsLabel>Page latency: </StatsLabel>
                 <PageLatency/>

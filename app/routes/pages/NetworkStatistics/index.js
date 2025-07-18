@@ -123,6 +123,12 @@ const SectionDescription = styled.p`
   }
 `;
 
+const NetworkNodesSection = styled.div`
+  @media (max-width: 768px) {
+    display: none;
+  }
+`;
+
 const GridLayout = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -229,22 +235,24 @@ class NetworkStatistics extends React.Component {
             <BigChartsSection/>
           </SectionContainer>
           
-          <SectionContainer>
-            <SectionHeader>
-              <div>
-                <SectionTitle>
-                  <SectionIcon color="#f0fdf4" iconColor="#166534">
-                    🌐
-                  </SectionIcon>
-                  Network Nodes
-                </SectionTitle>
-                <SectionDescription>
-                  Active nodes and their current status in the network. Monitor real-time connectivity and block synchronization.
-                </SectionDescription>
-              </div>
-            </SectionHeader>
-            <NodesList/>
-          </SectionContainer>
+          <NetworkNodesSection>
+            <SectionContainer>
+              <SectionHeader>
+                <div>
+                  <SectionTitle>
+                    <SectionIcon color="#f0fdf4" iconColor="#166534">
+                      🌐
+                    </SectionIcon>
+                    Network Nodes
+                  </SectionTitle>
+                  <SectionDescription>
+                    Active nodes and their current status in the network. Monitor real-time connectivity and block synchronization.
+                  </SectionDescription>
+                </div>
+              </SectionHeader>
+              <NodesList/>
+            </SectionContainer>
+          </NetworkNodesSection>
         </ContainerWithFixedElements>
       </PageContainer>
     );
