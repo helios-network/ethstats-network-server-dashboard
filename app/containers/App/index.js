@@ -11,7 +11,6 @@ import Modal from 'components/Modal';
 import NodeModal from 'components/NetStats/NodeModal';
 import CustomHeader from 'components/CustomHeader';
 import NoOverflowContainer from 'components/CustomHeader/NoOverflowContainer';
-import HistoricalHeader from 'components/NetStats/HistoricalHeader';
 import GuideTour from 'components/NetStats/GuideTour';
 import ConnectNodeModal from 'components/ConnectNodeModal';
 import CookiesBanner from 'components/CookiesBanner';
@@ -40,14 +39,8 @@ class App extends React.Component {
     displaySearch: PropTypes.bool,
     visibleNodeHistory: PropTypes.bool,
     visibleConnectNode: PropTypes.bool,
-    shouldGoToHistory: PropTypes.bool,
-    historyBlock: PropTypes.number,
     searchString: PropTypes.string,
     location: PropTypes.object,
-    nodesData: PropTypes.object,
-    chartsData: PropTypes.object,
-    nodesError: PropTypes.object,
-    chartsError: PropTypes.object,
   };
   constructor() {
     super();
@@ -112,55 +105,13 @@ class App extends React.Component {
     });
   };
   render() {
-    const { children, visibleSearch, visibleNodeHistory, location, nodesData, nodesError, chartsError, shouldGoToHistory, historyBlock, visibleConnectNode } = this.props;
-    let nodesNr = 0;
-    if (nodesData && location.pathname.split('/')[1] === 'history') {
-      if (nodesData[location.pathname.split('/')[3]]) {
-        nodesNr = nodesData[location.pathname.split('/')[3]].length;
-      }
-    }
-    let headerHasError = false;
-    if (chartsError) {
-      if (chartsError[location.pathname.split('/')[3]]) {
-        headerHasError = true;
-      }
-    }
-    if (nodesError) {
-      if (nodesError[location.pathname.split('/')[3]]) {
-        headerHasError = true;
-      }
-    }
-    let header;
-    if (shouldGoToHistory) {
-      header = (
-        <NoOverflowContainer className="min1440">
-          <CustomHeader startGuideTour={this.startGuideTour} hasActiveNodes hasGuideTour hidden/>
-          <HistoricalHeader blockNr={historyBlock.toString()} nodesNr={nodesNr} hasError={headerHasError} notHidden/>
-        </NoOverflowContainer>
-      );
-    } else {
-      header = (
-        <NoOverflowContainer className="min1440">
-          <CustomHeader startGuideTour={this.startGuideTour} hasActiveNodes hasGuideTour/>
-          <HistoricalHeader blockNr="" nodesNr={nodesNr} hasError={headerHasError}/>
-        </NoOverflowContainer>
-      );
-    }
-    if (location.pathname.split('/')[1] === 'history') {
-      let blockTime = null;
-      const blockNr = location.pathname.split('/')[3];
-      if (this.props.chartsData) {
-        if (this.props.chartsData[blockNr - -1]) {
-          blockTime = this.props.chartsData[blockNr - -1][0].charts['ethstats:blockTimeChartData'][this.props.chartsData[blockNr - -1][0].charts['ethstats:blockTimeChartData'].length - 1]['ethstats:blockTime'];
-        }
-      }
-      header = (
-        <NoOverflowContainer className="has-overflow min1440">
-          <CustomHeader startGuideTour={this.startGuideTour} hasActiveNodes hasGuideTour hidden/>
-          <HistoricalHeader blockNr={location.pathname.split('/')[3]} nodesNr={nodesNr} hasError={headerHasError} notHidden blockTime={blockTime}/>
-        </NoOverflowContainer>
-      );
-    }
+    const { children, visibleSearch, visibleNodeHistory, visibleConnectNode } = this.props;
+    
+    const header = (
+      <NoOverflowContainer className="min1440">
+        <CustomHeader startGuideTour={this.startGuideTour} hasActiveNodes hasGuideTour/>
+      </NoOverflowContainer>
+    );
     const inPrivacy = window.location.pathname === '/privacy-policy';
     return (
       <ThemeProvider theme={theme}>
@@ -202,12 +153,6 @@ const mapStateToProps = (state) => {
   return {
     visibleNodeHistory: state.global.showNodeHistoryModal,
     visibleConnectNode: state.global.showConnectNodeModal,
-    nodesData: state.historicalBlock.nodesData,
-    chartsData: state.historicalBlock.chartsData,
-    nodesError: state.historicalBlock.nodesError,
-    chartsError: state.historicalBlock.chartsError,
-    shouldGoToHistory: state.global.shouldGoToHistory,
-    historyBlock: state.global.historyBlock,
   };
 };
 

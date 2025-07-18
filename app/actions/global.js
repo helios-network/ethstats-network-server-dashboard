@@ -80,23 +80,7 @@ export function stopTickTimer() {
   };
 }
 
-export function animateForHistory(value) {
-  return (dispatch) => {
-    dispatch({
-      type: types.CHANGE_GO_TO_HISTORY,
-      shouldGoToHistory: value,
-    });
-  };
-}
 
-export function saveHistoryBlock(historyBlock) {
-  return (dispatch) => {
-    dispatch({
-      type: types.CHANGE_HISTORY_BLOCK,
-      historyBlock: historyBlock,
-    });
-  };
-}
 
 export function saveSmallChartBarCount(count) {
   return (dispatch) => {

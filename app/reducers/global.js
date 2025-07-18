@@ -6,8 +6,6 @@ const initialState = {
   showNodeHistoryModal: false,
   showConnectNodeModal: false,
   tickTimer: null,
-  shouldGoToHistory: false,
-  historyBlock: null,
   smallChartBarCount: 24,
   bigChartBarCount: 30,
 };
@@ -33,16 +31,6 @@ export default function global(state = initialState, action) {
       return {
         ...state,
         tickTimer: action.tickTimer,
-      };
-    case types.CHANGE_GO_TO_HISTORY:
-      return {
-        ...state,
-        shouldGoToHistory: action.shouldGoToHistory,
-      };
-    case types.CHANGE_HISTORY_BLOCK:
-      return {
-        ...state,
-        historyBlock: action.historyBlock,
       };
     case types.CHANGE_SMALL_CHART_BAR_COUNT:
       return {

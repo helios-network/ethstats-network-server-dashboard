@@ -146,9 +146,7 @@ class MobileMenu extends React.Component {
           <MenuItem onClick={() => { this.closeMenu(); window.location.href = '/nodes'; }}>
             Nodes
           </MenuItem>
-          <MenuItem onClick={() => { this.closeMenu(); window.location.href = '/history'; }}>
-            History
-          </MenuItem>
+          
         </MenuContent>
 
         <Breadcrumbs>

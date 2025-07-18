@@ -18,7 +18,6 @@ import minersTop from './minersTop';
 import pendingLastBlock from './pendingLastBlock';
 import pageLatency from './pageLatency';
 import nodeHistory from './nodeHistory';
-import historicalBlock from './historicalBlock';
 
 const rootReducer = combineReducers({
   transactionsHistory,
@@ -40,7 +39,6 @@ const rootReducer = combineReducers({
   pendingLastBlock,
   pageLatency,
   nodeHistory,
-  historicalBlock,
 });
 
 export default rootReducer;

@@ -12,7 +12,7 @@ import StatsLabel from './StatsLabel';
 import PageLatency from './PageLatency/index';
 import ActiveNodes from './ActiveNodes/index';
 import ListYourNode from 'components/ListYourNode';
-import History from 'components/NetStats/History';
+
 import EthstatsLogo from 'components/EthstatsLogo';
 
 export default class CustomHeader extends React.Component {
@@ -43,7 +43,7 @@ export default class CustomHeader extends React.Component {
               {!isMobile && (
                 <div style={{ display: 'flex', gap: '10px', marginLeft: '10px' }}>
                   <ListYourNode/>
-                  <History />
+          
                 </div>
               )}
             </div>

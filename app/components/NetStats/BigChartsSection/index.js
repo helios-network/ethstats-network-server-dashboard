@@ -2,8 +2,7 @@ import React from 'react';
 import Container from './Container';
 import BigChartsSectionItem from 'components/NetStats/BigChartsSectionItem';
 import { connect } from 'react-redux';
-import HistoricalLastMiners from 'components/NetStats/HistoricalLastMiners';
-import HistoricalNodesMap from 'components/NetStats/HistoricalNodesMap';
+
 import styled from 'styled-components';
 
 const NodesTableContainer = styled.div`
@@ -231,7 +230,7 @@ class BigChartsSection extends React.Component {
           bottomLeftReducer="minersTop"
           valuePrefix="Miner: "
           labelPrefix="Block: "
-          customChart={<HistoricalLastMiners minersData={minersData} />}
+          
         />
         <BigChartsSectionItem
           id="nodes_map"
@@ -251,7 +250,7 @@ class BigChartsSection extends React.Component {
           bottomLeftReducer="nodesList"
           valuePrefix="Node: "
           labelPrefix="Location: "
-          customChart={<HistoricalNodesMap nodesData={nodesData} />}
+          
         />
         <BigChartsSectionItem
           id="gas_limit"
