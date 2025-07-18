@@ -42,7 +42,7 @@ class NodeModal extends React.Component {
     super(props);
 
     this.state = {
-      scrollHeight: 0.8 * window.innerHeight - 60 + 'px',
+      scrollHeight: 0.5 * window.innerHeight - 60 + 'px',
       interval: 'lastHour',
       customTimeframe: true,
       startDate: moment().subtract(1, 'd'),
@@ -65,7 +65,7 @@ class NodeModal extends React.Component {
     window.removeEventListener('resize', this.handleResize);
   }
   handleResize = () => {
-    this.setState({ scrollHeight: 0.8 * window.innerHeight - 50 + 'px' });
+    this.setState({ scrollHeight: 0.5 * window.innerHeight - 50 + 'px' });
   };
   handleClickOutside = evt => {
     this.props.hideNodeHistoryModal();

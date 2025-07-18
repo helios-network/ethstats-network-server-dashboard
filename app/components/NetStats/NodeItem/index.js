@@ -8,7 +8,6 @@ import Container from './Container';
 import Counter from './Counter';
 import Detail from './Detail';
 import FlexBox from './FlexBox';
-import Pin from './Pin';
 import JustFlex from './JustFlex';
 import PaddedProp from './PaddedProp';
 import { getNodeName as getNodeNameAction } from 'actions/nodeHistory';
@@ -214,41 +213,40 @@ class NodeItem extends React.Component {
     }
     return shouldBeVisible ? (
       <Container>
-        <Pin pinned={pinned} ethNodeName={ethNodeName} onClick={this.props.updateNodePinCallback} />
         <FlexBox onClick={() => {this.handleNodeClick(shortNodeName);}}>
-          <Detail width="290px" color={colors.nameColor} doubleGrow data-tip data-for={`viewDetails-${shortNodeName}`} className="max-width-text">{shortNodeName}
+          <Detail width="300px" color={colors.nameColor} doubleGrow data-tip data-for={`viewDetails-${shortNodeName}`} className="max-width-text" style={{ paddingLeft: "10px" }}>{shortNodeName}
             <ReactTooltip id={`viewDetails-${shortNodeName}`} place="bottom" className="tooltip-custom">
               <span>View details</span>
             </ReactTooltip>
           </Detail>
-          <Detail width="95px" style={{ textAlign: "center" }} color={colors.nameColor} data-tip data-for={`viewNodeType-${shortNodeName}`}>{nodeType}
+          <Detail width="100px" style={{ textAlign: "center" }} color={colors.nameColor} data-tip data-for={`viewNodeType-${shortNodeName}`}>{nodeType}
             <ReactTooltip id={`viewNodeType-${shortNodeName}`} place="bottom" className="tooltip-custom">
               <span>{data['ethstats:nodeData']['ethstats:node'] ? data['ethstats:nodeData']['ethstats:node'] : 'N/A' }</span>
             </ReactTooltip>
           </Detail>
-          <Detail width="65px" color={colors.latencyColor} data-tip data-for={`viewDetails-${shortNodeName}`}>{latency}</Detail>
-          <Detail width="70px" color={colors.nameColor} data-tip data-for={`viewNodeCoinbase-${shortNodeName}`}>{((['clique', 'ibft2'].includes(NETWORK_ALGO)) ? isValidator : mining)}
+          <Detail width="80px" color={colors.latencyColor} data-tip data-for={`viewDetails-${shortNodeName}`}>{latency}</Detail>
+          <Detail width="90px" color={colors.nameColor} data-tip data-for={`viewNodeCoinbase-${shortNodeName}`}>{((['clique', 'ibft2'].includes(NETWORK_ALGO)) ? isValidator : mining)}
             <ReactTooltip id={`viewNodeCoinbase-${shortNodeName}`} place="bottom" className="tooltip-custom">
               <span>Address: {data['ethstats:nodeData']['ethstats:coinbase'] ? data['ethstats:nodeData']['ethstats:coinbase'] : 'N/A' }</span>
             </ReactTooltip>
           </Detail>
-          <Detail width="50px" color={colors.nameColor} data-tip data-for={`viewDetails-${shortNodeName}`}>{peers}</Detail>
-          <Detail width="160px" color={colors.blockColor} data-tip data-for={`viewDetails-${shortNodeName}`}>{lastBlock}<span className="space"/>{lastBlockHash}</Detail>
-          <Detail width="75px" color={colors.nameColor} data-tip data-for={`viewDetails-${shortNodeName}`}>{lastBlockTxCount}</Detail>
+          <Detail width="60px" color={colors.nameColor} data-tip data-for={`viewDetails-${shortNodeName}`}>{peers}</Detail>
+          <Detail width="180px" color={colors.blockColor} data-tip data-for={`viewDetails-${shortNodeName}`}>{lastBlock}<span className="space"/>{lastBlockHash}</Detail>
+          <Detail width="90px" color={colors.nameColor} data-tip data-for={`viewDetails-${shortNodeName}`}>{lastBlockTxCount}</Detail>
           <Counter
             nodeIsActive={data['ethstats:nodeData']['ethstats:nodeIsActive']}
             receivedTimestamp={data['ethstats:nodeBlockData'] && data['ethstats:nodeBlockData']['ethstats:receivedTimestamp'].toString()}
             blockNumber={data['ethstats:nodeBlockData'] && parseInt(data['ethstats:nodeBlockData']['ethon:number'], 10)}
             syncBlockNumber={data['ethstats:nodeSyncInfo'] && parseInt(data['ethstats:nodeSyncInfo']['ethstats:currentBlock'], 10)}
           />
-          <Detail width="260px" color={colors.propTimeColor}>
+          <Detail width="280px" color={colors.propTimeColor}>
             <JustFlex>
               <PaddedProp>{lastBlockPropTime}</PaddedProp>
               {propChartData && <NodePropagationChart dataKey="propagation" data={propChartData} color={colors.nameColor} measureUnit="ms"/> }
             </JustFlex>
           </Detail>
-          <Detail width="75px" color={colors.avgPropColor} rightSide data-tip data-for={`viewDetails-${shortNodeName}`}>{propAvg}</Detail>
-          <Detail width="60px" color={colors.uptimeColor} rightSide data-tip data-for={`viewDetails-${shortNodeName}`}>{uptime}</Detail>
+          <Detail width="80px" color={colors.avgPropColor} rightSide data-tip data-for={`viewDetails-${shortNodeName}`}>{propAvg}</Detail>
+          <Detail width="70px" color={colors.uptimeColor} rightSide data-tip data-for={`viewDetails-${shortNodeName}`} style={{ paddingRight: "5px" }}>{uptime}</Detail>
         </FlexBox>
       </Container>
     ) : null;

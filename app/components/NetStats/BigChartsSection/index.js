@@ -154,6 +154,7 @@ class BigChartsSection extends React.Component {
           labelPrefix="Block: "
           hasDomain
         />
+        {this.renderNodesTable()}
         <BigChartsSectionItem
           id="transactions"
           mainTitle="Transactions"
@@ -171,25 +172,6 @@ class BigChartsSection extends React.Component {
           topRightReducer="pendingLastBlock"
           bottomLeftReducer="transactionsHistory"
           valuePrefix="Transactions: "
-          labelPrefix="Block: "
-        />
-        <BigChartsSectionItem
-          id="gas_limit"
-          mainTitle="Block gas limit"
-          secondTitle="Avg. gas limit"
-          secondValue="N/A"
-          thirdTitle="Avg. gas price"
-          color="#8399B8"
-          iconName="gas"
-          dataKey="ethon:blockGasLimit"
-          measureUnit="gas"
-          tooltipKey="block"
-          hasDomain
-          chartReducer="gasLimit"
-          topLeftReducer="gasLimit"
-          topRightReducer="pendingLastBlock"
-          bottomLeftReducer="gasLimit"
-          valuePrefix="Gas limit: "
           labelPrefix="Block: "
         />
         <BigChartsSectionItem
@@ -271,7 +253,25 @@ class BigChartsSection extends React.Component {
           labelPrefix="Location: "
           customChart={<HistoricalNodesMap nodesData={nodesData} />}
         />
-        {this.renderNodesTable()}
+        <BigChartsSectionItem
+          id="gas_limit"
+          mainTitle="Block gas limit"
+          secondTitle="Avg. gas limit"
+          secondValue="N/A"
+          thirdTitle="Avg. gas price"
+          color="#8399B8"
+          iconName="gas"
+          dataKey="ethon:blockGasLimit"
+          measureUnit="gas"
+          tooltipKey="block"
+          hasDomain
+          chartReducer="gasLimit"
+          topLeftReducer="gasLimit"
+          topRightReducer="pendingLastBlock"
+          bottomLeftReducer="gasLimit"
+          valuePrefix="Gas limit: "
+          labelPrefix="Block: "
+        />
       </Container>
     );
   }

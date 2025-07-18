@@ -5,15 +5,20 @@ import styled from 'styled-components';
 const InnerHeaderItem = styled.div`
   width: ${props => props.width};
   font-weight: 600;
-  opacity: ${props => props.active ? '1' : '0.6'};
+  font-size: 13px;
+  color: ${props => props.active ? '#1e293b' : '#64748b'};
+  opacity: ${props => props.active ? '1' : '0.8'};
   cursor: ${props => props.isClickable ? 'pointer' : 'default'};
   text-align: ${props => props.rightSide ? 'right' : 'left'};
   flex-grow: ${props => props.doubleGrow ? '2' : '1'};
   display: flex;
+  align-items: center;
   justify-content: ${props => props.rightSide ? 'flex-end' : 'flex-start'};
+  transition: all 0.2s ease;
   
   &:hover {
-    opacity: ${props => props.isClickable ? '1' : '0.6'};
+    color: ${props => props.isClickable ? '#1e293b' : '#64748b'};
+    opacity: ${props => props.isClickable ? '1' : '0.8'};
   }
 
   @media (max-width: 768px) {
@@ -21,6 +26,7 @@ const InnerHeaderItem = styled.div`
     text-align: left;
     justify-content: flex-start;
     padding: 4px 0;
+    font-size: 12px;
   }
 
   @media (max-width: 480px) {
@@ -28,6 +34,7 @@ const InnerHeaderItem = styled.div`
     text-align: left;
     justify-content: flex-start;
     padding: 4px 0;
+    font-size: 11px;
   }
 `;
 

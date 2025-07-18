@@ -6,7 +6,7 @@ const HeaderContent = styled.div`
   display: flex;
   flex-direction: row;
   background-color: #FFF;
-  padding: 14px 52px 15px 56px;
+  padding: 14px 20px 15px 20px;
   //border-top: 1px solid rgba(50,65,86,0.50);
   font-size: 10px;
   font-weight: 600;

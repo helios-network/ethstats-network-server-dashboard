@@ -3,10 +3,10 @@ import styled from 'styled-components';
 
 const Container = styled.div`
   position: absolute;
-  top: 10%;
+  top: 25%;
   left: 0;
   right: 0;
-  height: 80%;
+  height: 50%;
   //width: calc(100% - 40px);
   width: 1240px;
   margin: 0 auto;

@@ -6,31 +6,41 @@ const Container = styled.div`
   order: ${props => props.order};
   display: flex;
   flex-direction: row;
-  opacity: 0.6;
-  padding-right: 52px;
-  padding-left: 56px;
+  align-items: center;
+  background: white;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  padding: 16px 20px;
   position: relative;
   min-height: 57px;
-  transition: opacity linear 0.2s;
+  transition: all 0.2s ease;
+  border: 1px solid #f1f5f9;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
   
   &:hover {
-    opacity: 1;
+    border-color: #e2e8f0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transform: translateY(-1px);
+  }
+
+  &:last-child {
+    margin-bottom: 0;
   }
 
   @media (max-width: 768px) {
-    padding-right: 20px;
-    padding-left: 20px;
+    padding: 12px 16px;
     min-height: 50px;
     flex-wrap: wrap;
-    gap: 5px;
+    gap: 8px;
+    margin-bottom: 6px;
   }
 
   @media (max-width: 480px) {
-    padding-right: 10px;
-    padding-left: 10px;
+    padding: 10px 12px;
     min-height: 45px;
     flex-wrap: wrap;
-    gap: 5px;
+    gap: 6px;
+    margin-bottom: 4px;
   }
 `;
 /**

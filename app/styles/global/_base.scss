@@ -349,7 +349,9 @@ h5, .h5 {
 }
 
 .nodeslist-scrollable div div {
-  border-radius: 16px;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  background: transparent !important;
 }
 
 .max-width-text {

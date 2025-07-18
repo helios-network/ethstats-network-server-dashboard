@@ -239,7 +239,7 @@ class NetworkStatistics extends React.Component {
                   Network Nodes
                 </SectionTitle>
                 <SectionDescription>
-                  Active nodes and their current status in the network
+                  Active nodes and their current status in the network. Monitor real-time connectivity and block synchronization.
                 </SectionDescription>
               </div>
             </SectionHeader>
