@@ -18,9 +18,7 @@ import EthstatsLogo from 'components/EthstatsLogo';
 export default class CustomHeader extends React.Component {
   static propTypes = {
     style: PropTypes.object,
-    startGuideTour: PropTypes.func,
     hasActiveNodes: PropTypes.bool,
-    hasGuideTour: PropTypes.bool,
     hidden: PropTypes.bool,
   };
 

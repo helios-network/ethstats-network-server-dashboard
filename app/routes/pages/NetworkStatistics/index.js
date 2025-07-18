@@ -253,7 +253,6 @@ class NetworkStatistics extends React.Component {
 
 NetworkStatistics.propTypes = {
   dispatch: PropTypes.func,
-  startGuideTour: PropTypes.func,
 };
 
 export default connect()(NetworkStatistics);

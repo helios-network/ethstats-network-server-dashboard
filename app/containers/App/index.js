@@ -11,7 +11,7 @@ import Modal from 'components/Modal';
 import NodeModal from 'components/NetStats/NodeModal';
 import CustomHeader from 'components/CustomHeader';
 import NoOverflowContainer from 'components/CustomHeader/NoOverflowContainer';
-import GuideTour from 'components/NetStats/GuideTour';
+
 import ConnectNodeModal from 'components/ConnectNodeModal';
 import CookiesBanner from 'components/CookiesBanner';
 import Container from 'components/ConnectNodeModal/Container';
@@ -46,10 +46,6 @@ class App extends React.Component {
     super();
 
     this.state = {
-      tour: {
-        run: localStorage.getItem('tourCompleted') === null,
-        autoStart: false,
-      },
       acceptedCookies: localStorage.getItem('cookiesAccepted') !== null,
     };
   }
@@ -85,19 +81,7 @@ class App extends React.Component {
   handleLastBlockSubscribe(item, data) {
     this.props.loadLastBlock(data['ethstats:lastBlockData']);
   }
-  startGuideTour = () => {
-    if (this.state.tour.run) {
-      this.setState({tour: {run: false, autoStart: false}}, () => {
-        this.setState({tour: {run: true, autoStart: true}});
-      });
-    } else {
-      this.setState({tour: {run: true, autoStart: true}});
-    }
-  };
-  resetTour = () => {
-    localStorage.setItem('tourCompleted', '1');
-    this.setState({tour: {run: false, autoStart: false}});
-  };
+
   acceptCookies = () => {
     localStorage.setItem('cookiesAccepted', '1');
     this.setState({
@@ -109,7 +93,7 @@ class App extends React.Component {
     
     const header = (
       <NoOverflowContainer className="min1440">
-        <CustomHeader startGuideTour={this.startGuideTour} hasActiveNodes hasGuideTour/>
+        <CustomHeader hasActiveNodes/>
       </NoOverflowContainer>
     );
     const inPrivacy = window.location.pathname === '/privacy-policy';
@@ -132,15 +116,10 @@ class App extends React.Component {
               </Modal>
             </div>
             <div className="full-width">
-              {/* <GuideTour
-                run={this.state.tour.run}
-                autoStart={this.state.tour.autoStart}
-                onTourEnd={this.resetTour}
-              /> */}
               { !this.state.acceptedCookies && <CookiesBanner onClick={this.acceptCookies}/> }
               { !inPrivacy && header }
               { children }
-              { !inPrivacy && <Footer hasGuideTour startGuideTour={this.startGuideTour}/> }
+              { !inPrivacy && <Footer/> }
             </div>
           </main>
         </div>
