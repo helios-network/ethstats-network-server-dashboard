@@ -1,6 +1,6 @@
 const config = {
-  NETSTATS_API_URL: 'https://stats-serv.io/',
-  DS_URL: 'wss://status-ws/deepstream', // example: port ws://127.0.0.1:6020/deepstream
+  NETSTATS_API_URL: 'https://stats.helioschainlabs.org',
+  DS_URL: 'wss://stats.helioschainlabs.org/deepstream', // example: port ws://127.0.0.1:6020/deepstream
   DS_USER: 'frontend',
   DS_PASS: '',
   DS_NAMESPACE: 'ethstats/',
