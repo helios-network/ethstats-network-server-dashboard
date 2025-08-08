@@ -1,0 +1,1 @@
+tar -czvf dist.tar.gz dist
